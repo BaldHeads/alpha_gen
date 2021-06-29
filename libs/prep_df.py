@@ -10,12 +10,6 @@ def normalize_df(df):
     :param db_file: database file
     :return: Connection object or None
     """
-    try:
-        conn = sqlite3.connect(db_file)
-    except Error as e:
-        print(e)
-    df = pd.read_sql_query("SELECT * FROM historical", conn)
-    conn.close()
 
     df = df.pivot(index="timestamp", columns="symbol", values="close")
     df.index = pd.to_datetime(df.index)

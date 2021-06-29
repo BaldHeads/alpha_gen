@@ -1,5 +1,6 @@
 import sqlite3
 from sqlite3 import Error
+import pandas as pd
 
 def create_connection(db_file):
     """ create a database connection to the SQLite database
@@ -66,3 +67,10 @@ def populate_initial_db(conn, alpaca, tickers):
                 for i in range(0,len(df)):
                     cur.execute(sql_insert, (ticker, df.index[i].isoformat() , df.iloc[i]["close"]))
     cur.commit()
+
+def df_from_db(conn):
+    """ convert the sqlite database into a pandas DataFrame
+    :param conn: a Sqlite3 connection
+    :return: pandas DataFrame directly from database
+    """
+    return pd.read_sql_query("SELECT * FROM historical", conn)
