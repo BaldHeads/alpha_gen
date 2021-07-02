@@ -1,5 +1,7 @@
 import sqlite3
 from sqlite3 import Error
+import pandas as pd
+import csv
 
 def create_connection(db_file):
     """ create a database connection to the SQLite database
@@ -66,3 +68,24 @@ def populate_initial_db(conn, alpaca, tickers):
                 for i in range(0,len(df)):
                     cur.execute(sql_insert, (ticker, df.index[i].isoformat() , df.iloc[i]["close"]))
     cur.commit()
+
+def df_from_db(conn):
+    """ convert the sqlite database into a pandas DataFrame
+    :param conn: a Sqlite3 connection
+    :return: pandas DataFrame directly from database
+    """
+    return pd.read_sql_query("SELECT * FROM historical", conn)
+
+def get_tickers(ticker_file):
+    """ return a list of stock tickers from the 3rd column of the provided csv
+    :param ticker_file: a Sqlite3 connection
+    :return tickers: a list of ticker symbols
+    """
+
+    tickers=[]
+    with open(ticker_file,'r') as csvfile:
+        csvreader = csv.reader(csvfile, delimiter=',')
+        header = next(csvreader)
+        for row in csvreader:
+            tickers.append(row[2])
+    return tickers
