@@ -1,9 +1,13 @@
 import os
 import csv
+import time
 import pandas as pd
 from dotenv import load_dotenv
 import sqlite3
 import libs.db as db
+import alpaca_trade_api as tradeapi
+import sys
+import libs.db
 
 
 load_dotenv()
@@ -17,7 +21,7 @@ alpaca = tradeapi.REST(
 
 #Get tickers
 tickers=[]
-with open("sp10.csv",'r') as csvfile:
+with open("data\sp10.csv",'r') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
     header = next(csvreader)
     print(header)
@@ -28,6 +32,9 @@ db_file = "sp10_not_normalized.db"
 conn = db.create_connection(db_file)
 sql_insert = "INSERT INTO historical(symbol, timestamp, close) VALUES(?,?,?)"
 cur = conn.cursor()
+
+#create default table in the db
+db.create_initial_db(conn)
 
 # Grab data from Jan 1 2017 to June 25, 2021 by month and by ticker
 # Loop will break after June 2021 and commit to database

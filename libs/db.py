@@ -74,7 +74,7 @@ def df_from_db(conn):
     :param conn: a Sqlite3 connection
     :return: pandas DataFrame directly from database
     """
-    return pd.read_sql_query("SELECT * FROM historical", conn)
+    return pd.read_sql_query("SELECT * FROM historical WHERE timestamp < '2021-04-01'", conn)
 
 def get_tickers(ticker_file):
     """ return a list of stock tickers from the 3rd column of the provided csv
