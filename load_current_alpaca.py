@@ -19,12 +19,7 @@ alpaca = tradeapi.REST(
     api_version="v2")
 
 #Get tickers
-tickers=[]
-with open("data\sp10.csv",'r') as csvfile:
-    csvreader = csv.reader(csvfile, delimiter=',')
-    header = next(csvreader)
-    for row in csvreader:
-        tickers.append(row[2])
+tickers=db.get_tickers("data/sp10.csv")
 
 db_file = "sp10_current.db"
 conn = db.create_connection(db_file)

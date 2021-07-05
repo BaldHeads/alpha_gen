@@ -20,18 +20,10 @@ alpaca = tradeapi.REST(
     api_version="v2")
 
 #Get tickers
-tickers=[]
-with open("data\sp10.csv",'r') as csvfile:
-    csvreader = csv.reader(csvfile, delimiter=',')
-    header = next(csvreader)
-    print(header)
-    for row in csvreader:
-        tickers.append(row[2])
+tickers=db.get_tickers("data/sp10.csv")
 
-db_file = "sp10_not_normalized.db"
+db_file = "sp10_historical.db"
 conn = db.create_connection(db_file)
-sql_insert = "INSERT INTO historical(symbol, timestamp, close) VALUES(?,?,?)"
-cur = conn.cursor()
 
 #create default table in the db
 db.create_initial_db(conn)
@@ -40,22 +32,6 @@ db.create_initial_db(conn)
 # Loop will break after June 2021 and commit to database
 # There is a time.sleep(5) after each API call to stay below API limits
 
-for year in range(2017,2021+1):
-    for month in range(1,12+1):
-        if year == 2021 and month > 6:
-            break
-        temp_tz = pd.Timestamp(year=year, month=month, day=1)
-        start = pd.Timestamp(f"{year}-{month}-{1}", tz="America/New_York").isoformat()
-        if year == 2021 and month == 6:
-            end = pd.Timestamp(f"{year}-{month}-{25}", tz="America/New_York").isoformat()
-        else:
-            end = pd.Timestamp(f"{year}-{month}-{temp_tz.daysinmonth}", tz="America/New_York").isoformat()
-        print(start, end)
-
-        for ticker in tickers:
-            df = alpaca.get_bars(ticker, tradeapi.rest.TimeFrame.Hour, start=start, end=end, limit=1000).df
-            time.sleep(5)
-            for i in range(0,len(df)):
-                cur.execute(sql_insert, (ticker, df.index[i].isoformat() , df.iloc[i]["close"]))
+db.populate_initial_db(conn, alpaca, tickers)
 
 db.close_connection(conn)
