@@ -271,15 +271,264 @@ tab1_content = dbc.Col([
         ])
     ])
 
+
 # add content for metrics bar plots
-# tab2_content = dbc.Row([dbc.])
+tab2_content = dbc.Col([
+        dbc.Row([
+            dbc.Card(
+                [
+                    dbc.CardImg(
+                        src="/assets/apple.png",
+                        top=True,
+                        style={"width": "6rem"},
+                    ),
+
+                    dbc.CardBody([
+                        dbc.Row([
+                            dbc.Col([
+                                dcc.Graph(id='apple_bar', figure={},
+                                          config={'displayModeBar':False})
+                            ])
+                        ]),
+                    ]),
+                ],
+                style={"width": "24rem"},
+                className="mt-3"
+            ),
+            dbc.Card(
+                [
+                    dbc.CardImg(
+                        src="/assets/amazon.png",
+                        top=True,
+                        style={"width": "6rem"},
+                    ),
+
+                    dbc.CardBody([
+                        dbc.Row([
+                            dbc.Col([
+                                dcc.Graph(id='amzn_bar', figure={},
+                                          config={'displayModeBar':False})
+                            ])
+                        ]),
+                    ]),
+                ],
+                style={"width": "24rem"},
+                className="mt-3"
+            ),
+            dbc.Card(
+                [
+                    dbc.CardImg(
+                        src="/assets/berkshire-hathaway.png",
+                        top=True,
+                        style={"width": "6rem"},
+                    ),
+
+                    dbc.CardBody([
+                        dbc.Row([
+                            dbc.Col([
+                                dcc.Graph(id='brkb_bar', figure={},
+                                          config={'displayModeBar':False})
+                            ])
+                        ]),
+                    ]),
+                ],
+                style={"width": "24rem"},
+                className="mt-3"
+            ),
+        ]),
+        dbc.Row([
+            dbc.Card(
+                [
+                    dbc.CardImg(
+                        src="/assets/facebook.png",
+                        top=True,
+                        style={"width": "6rem"},
+                    ),
+
+                    dbc.CardBody([
+                        dbc.Row([
+                            dbc.Col([
+                                dcc.Graph(id='fb_bar', figure={},
+                                          config={'displayModeBar':False})
+                            ])
+                        ]),
+                    ]),
+                ],
+                style={"width": "24rem"},
+                className="mt-3"
+            ),
+            dbc.Card(
+                [
+                    dbc.CardImg(
+                        src="/assets/google.png",
+                        top=True,
+                        style={"width": "6rem"},
+                    ),
+
+                    dbc.CardBody([
+                        dbc.Row([
+                            dbc.Col([
+                                dcc.Graph(id='googl_bar', figure={},
+                                          config={'displayModeBar':False})
+                            ])
+                        ]),
+                    ]),
+                ],
+                style={"width": "24rem"},
+                className="mt-3"
+            ),
+            dbc.Card(
+                [
+                    dbc.CardImg(
+                        src="/assets/jnj.png",
+                        top=True,
+                        style={"width": "6rem"},
+                    ),
+
+                    dbc.CardBody([
+                        dbc.Row([
+                            dbc.Col([
+                                dcc.Graph(id='jnj_bar', figure={},
+                                          config={'displayModeBar':False})
+                            ])
+                        ]),
+                    ]),
+                ],
+                style={"width": "24rem"},
+                className="mt-3"
+            ),
+        ]),
+        dbc.Row([
+            dbc.Card(
+                [
+                    dbc.CardImg(
+                        src="/assets/jpmorgan.png",
+                        top=True,
+                        style={"width": "6rem"},
+                    ),
+
+                    dbc.CardBody([
+                        dbc.Row([
+                            dbc.Col([
+                                dcc.Graph(id='jpm_bar', figure={},
+                                          config={'displayModeBar':False})
+                            ])
+                        ]),
+                    ]),
+                ],
+                style={"width": "24rem"},
+                className="mt-3"
+            ),
+            dbc.Card(
+                [
+                    dbc.CardImg(
+                        src="/assets/microsoft.png",
+                        top=True,
+                        style={"width": "6rem"},
+                    ),
+
+                    dbc.CardBody([
+                        dbc.Row([
+                            dbc.Col([
+                                dcc.Graph(id='msft_bar', figure={},
+                                          config={'displayModeBar':False})
+                            ])
+                        ]),
+                    ]),
+                ],
+                style={"width": "24rem"},
+                className="mt-3"
+            ),
+            dbc.Card(
+                [
+                    dbc.CardImg(
+                        src="/assets/nvidia.png",
+                        top=True,
+                        style={"width": "6rem"},
+                    ),
+
+                    dbc.CardBody([
+                        dbc.Row([
+                            dbc.Col([
+                                dcc.Graph(id='nvda_bar', figure={},
+                                          config={'displayModeBar':False})
+                            ])
+                        ]),
+                    ]),
+                ],
+                style={"width": "24rem"},
+                className="mt-3"
+            ),
+        ]),
+        dbc.Row([
+            dbc.Card(
+                [
+                    dbc.CardImg(
+                        src="/assets/tesla.png",
+                        top=True,
+                        style={"width": "6rem"},
+                    ),
+
+                    dbc.CardBody([
+                        dbc.Row([
+                            dbc.Col([
+                                dcc.Graph(id='tsla_bar', figure={},
+                                          config={'displayModeBar':False})
+                            ])
+                        ]),
+                    ]),
+                ],
+                style={"width": "24rem"},
+                className="mt-3"
+            ),
+            dbc.Card(
+                [
+                    dbc.CardImg(
+                        src="/assets/bitcoin.png",
+                        top=True,
+                        style={"width": "6rem"},
+                    ),
+
+                    dbc.CardBody([
+                        dbc.Row([
+                            dbc.Col([
+                                dcc.Graph(id='btc_bar', figure={},
+                                          config={'displayModeBar':False})
+                            ])
+                        ]),
+                    ]),
+                ],
+                style={"width": "24rem"},
+                className="mt-3"
+            ),
+            dbc.Card(
+                [
+                    dbc.CardImg(
+                        src="/assets/ethereum.png",
+                        top=True,
+                        style={"width": "6rem"},
+                    ),
+
+                    dbc.CardBody([
+                        dbc.Row([
+                            dbc.Col([
+                                dcc.Graph(id='eth_bar', figure={},
+                                          config={'displayModeBar':False})
+                            ])
+                        ]),
+                    ]),
+                ],
+                style={"width": "24rem"},
+                className="mt-3"
+            ),
+        ])
+    ])
 
 # overall structure of app    
 tabs = dbc.Tabs(
     [
         dbc.Tab(tab1_content, label="ROI vs Time"),
-        dbc.Tab(
-            "TBA", label="Summary Metrics"),
+        dbc.Tab(tab2_content, label="Summary Metrics"),
     ]
 )
 
