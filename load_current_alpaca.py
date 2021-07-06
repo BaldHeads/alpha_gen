@@ -29,14 +29,14 @@ cur = conn.cursor()
 #create default table in the db
 db.create_initial_db(conn)
 
-# Grab data for June 2021
+# Grab data for June 2021 plus a couple day in May for padding due to 60 hour shift.
 start = pd.Timestamp(f"2021-06-01", tz="America/New_York").isoformat()
 end = pd.Timestamp(f"2021-07-01", tz="America/New_York").isoformat()
 
 for ticker in tickers:
     print(ticker)
     df = alpaca.get_bars(ticker, tradeapi.rest.TimeFrame.Hour, start=start, end=end, limit=1000).df
-    time.sleep(5)
+    time.sleep(2)
     for i in range(0,len(df)):
         cur.execute(sql_insert, (ticker, df.index[i].isoformat() , df.iloc[i]["close"]))
 

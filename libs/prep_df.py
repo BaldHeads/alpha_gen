@@ -15,5 +15,6 @@ def normalize_df(df):
     df.index = pd.to_datetime(df.index)
     df.sort_index(inplace=True)
     df.fillna(method='ffill', inplace=True)
+    df.fillna(method='bfill', inplace=True)
     
     return df
