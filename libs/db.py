@@ -1,7 +1,10 @@
+from os import lseek
 import sqlite3
 from sqlite3 import Error
 import pandas as pd
 import csv
+import time
+import alpaca_trade_api as tradeapi
 
 def create_connection(db_file):
     """ create a database connection to the SQLite database
@@ -53,21 +56,21 @@ def populate_initial_db(conn, alpaca, tickers):
     cur = conn.cursor()
     for year in range(2017,2021+1):
         for month in range(1,12+1):
-            if year == 2021 and month > 6:
+            if year == 2021 and month > 3:
                 break
-            temp_tz = pd.Timestamp(year=year, month=month, day=1)
+
             start = pd.Timestamp(f"{year}-{month}-{1}", tz="America/New_York").isoformat()
-            if year == 2021 and month == 6:
-                end = pd.Timestamp(f"{year}-{month}-{25}", tz="America/New_York").isoformat()
-            else:
-                end = pd.Timestamp(f"{year}-{month}-{temp_tz.daysinmonth}", tz="America/New_York").isoformat()
-        
+            if month == 12:
+                month = 0
+                year += 1
+            end = pd.Timestamp(f"{year}-{month+1}-{1}", tz="America/New_York").isoformat()
             for ticker in tickers:
                 df = alpaca.get_bars(ticker, tradeapi.rest.TimeFrame.Hour, start=start, end=end, limit=1000).df
-                time.sleep(5)
+                print(ticker, end)
+                time.sleep(2)
                 for i in range(0,len(df)):
                     cur.execute(sql_insert, (ticker, df.index[i].isoformat() , df.iloc[i]["close"]))
-    cur.commit()
+    conn.commit()
 
 def df_from_db(conn):
     """ convert the sqlite database into a pandas DataFrame
