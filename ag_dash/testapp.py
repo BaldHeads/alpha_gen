@@ -9,6 +9,7 @@ import dash_bootstrap_components as dbc
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
+import get_roi_px
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP],
                 meta_tags=[{"name":"viewport","content":"width-device-width, initial-scale=1.0"}]
@@ -33,13 +34,13 @@ tab1_content = dbc.Col([
                     dbc.CardBody([
                         dbc.Row([
                             dbc.Col([
-                                dcc.Graph(id='apple_roi', figure={},
+                                dcc.Graph(id='aapl_roi', figure=get_roi_px.get_roi_plot('aapl_roi'),
                                           config={'displayModeBar':False})
                             ])
                         ]),
                     ]),
                 ],
-                style={"width": "24rem"},
+                style={"width": "36rem"},
                 className="mt-3"
             ),
             dbc.Card(
@@ -53,13 +54,13 @@ tab1_content = dbc.Col([
                     dbc.CardBody([
                         dbc.Row([
                             dbc.Col([
-                                dcc.Graph(id='amzn_roi', figure={},
+                                dcc.Graph(id='amzn_roi', figure=get_roi_px.get_roi_plot('amzn_roi'),
                                           config={'displayModeBar':False})
                             ])
                         ]),
                     ]),
                 ],
-                style={"width": "24rem"},
+                style={"width": "36rem"},
                 className="mt-3"
             ),
             dbc.Card(
@@ -73,13 +74,13 @@ tab1_content = dbc.Col([
                     dbc.CardBody([
                         dbc.Row([
                             dbc.Col([
-                                dcc.Graph(id='brkb_roi', figure={},
+                                dcc.Graph(id='brkb_roi', figure=get_roi_px.get_roi_plot('brk.b_roi'),
                                           config={'displayModeBar':False})
                             ])
                         ]),
                     ]),
                 ],
-                style={"width": "24rem"},
+                style={"width": "36rem"},
                 className="mt-3"
             ),
         ]),
@@ -95,13 +96,13 @@ tab1_content = dbc.Col([
                     dbc.CardBody([
                         dbc.Row([
                             dbc.Col([
-                                dcc.Graph(id='fb_roi', figure={},
+                                dcc.Graph(id='fb_roi', figure=get_roi_px.get_roi_plot('fb_roi'),
                                           config={'displayModeBar':False})
                             ])
                         ]),
                     ]),
                 ],
-                style={"width": "24rem"},
+                style={"width": "36rem"},
                 className="mt-3"
             ),
             dbc.Card(
@@ -115,13 +116,13 @@ tab1_content = dbc.Col([
                     dbc.CardBody([
                         dbc.Row([
                             dbc.Col([
-                                dcc.Graph(id='googl_roi', figure={},
+                                dcc.Graph(id='googl_roi', figure=get_roi_px.get_roi_plot('googl_roi'),
                                           config={'displayModeBar':False})
                             ])
                         ]),
                     ]),
                 ],
-                style={"width": "24rem"},
+                style={"width": "36rem"},
                 className="mt-3"
             ),
             dbc.Card(
@@ -135,13 +136,13 @@ tab1_content = dbc.Col([
                     dbc.CardBody([
                         dbc.Row([
                             dbc.Col([
-                                dcc.Graph(id='jnj_roi', figure={},
+                                dcc.Graph(id='jnj_roi', figure=get_roi_px.get_roi_plot('jnj_roi'),
                                           config={'displayModeBar':False})
                             ])
                         ]),
                     ]),
                 ],
-                style={"width": "24rem"},
+                style={"width": "36rem"},
                 className="mt-3"
             ),
         ]),
@@ -157,13 +158,13 @@ tab1_content = dbc.Col([
                     dbc.CardBody([
                         dbc.Row([
                             dbc.Col([
-                                dcc.Graph(id='jpm_roi', figure={},
+                                dcc.Graph(id='jpm_roi', figure=get_roi_px.get_roi_plot('jpm_roi'),
                                           config={'displayModeBar':False})
                             ])
                         ]),
                     ]),
                 ],
-                style={"width": "24rem"},
+                style={"width": "36rem"},
                 className="mt-3"
             ),
             dbc.Card(
@@ -177,13 +178,13 @@ tab1_content = dbc.Col([
                     dbc.CardBody([
                         dbc.Row([
                             dbc.Col([
-                                dcc.Graph(id='msft_roi', figure={},
+                                dcc.Graph(id='msft_roi', figure=get_roi_px.get_roi_plot('msft_roi'),
                                           config={'displayModeBar':False})
                             ])
                         ]),
                     ]),
                 ],
-                style={"width": "24rem"},
+                style={"width": "36rem"},
                 className="mt-3"
             ),
             dbc.Card(
@@ -197,13 +198,13 @@ tab1_content = dbc.Col([
                     dbc.CardBody([
                         dbc.Row([
                             dbc.Col([
-                                dcc.Graph(id='nvda_roi', figure={},
+                                dcc.Graph(id='nvda_roi', figure=get_roi_px.get_roi_plot('nvda_roi'),
                                           config={'displayModeBar':False})
                             ])
                         ]),
                     ]),
                 ],
-                style={"width": "24rem"},
+                style={"width": "36rem"},
                 className="mt-3"
             ),
         ]),
@@ -219,13 +220,13 @@ tab1_content = dbc.Col([
                     dbc.CardBody([
                         dbc.Row([
                             dbc.Col([
-                                dcc.Graph(id='tsla_roi', figure={},
+                                dcc.Graph(id='tsla_roi', figure=get_roi_px.get_roi_plot('tsla_roi'),
                                           config={'displayModeBar':False})
                             ])
                         ]),
                     ]),
                 ],
-                style={"width": "24rem"},
+                style={"width": "36rem"},
                 className="mt-3"
             ),
             dbc.Card(
@@ -239,13 +240,13 @@ tab1_content = dbc.Col([
                     dbc.CardBody([
                         dbc.Row([
                             dbc.Col([
-                                dcc.Graph(id='btc_roi', figure={},
+                                dcc.Graph(id='btc_roi', figure=get_roi_px.get_roi_plot('aapl_roi'),
                                           config={'displayModeBar':False})
                             ])
                         ]),
                     ]),
                 ],
-                style={"width": "24rem"},
+                style={"width": "36rem"},
                 className="mt-3"
             ),
             dbc.Card(
@@ -259,27 +260,276 @@ tab1_content = dbc.Col([
                     dbc.CardBody([
                         dbc.Row([
                             dbc.Col([
-                                dcc.Graph(id='eth_roi', figure={},
+                                dcc.Graph(id='eth_roi', figure=get_roi_px.get_roi_plot('aapl_roi'),
                                           config={'displayModeBar':False})
                             ])
                         ]),
                     ]),
                 ],
-                style={"width": "24rem"},
+                style={"width": "36rem"},
                 className="mt-3"
             ),
         ])
     ])
 
+
 # add content for metrics bar plots
-# tab2_content = dbc.Row([dbc.])
+tab2_content = dbc.Col([
+        dbc.Row([
+            dbc.Card(
+                [
+                    dbc.CardImg(
+                        src="/assets/apple.png",
+                        top=True,
+                        style={"width": "6rem"},
+                    ),
+
+                    dbc.CardBody([
+                        dbc.Row([
+                            dbc.Col([
+                                dcc.Graph(id='apple_bar', figure=get_roi_px.get_roi_plot('aapl_roi'),
+                                          config={'displayModeBar':False})
+                            ])
+                        ]),
+                    ]),
+                ],
+                style={"width": "36rem"},
+                className="mt-3"
+            ),
+            dbc.Card(
+                [
+                    dbc.CardImg(
+                        src="/assets/amazon.png",
+                        top=True,
+                        style={"width": "6rem"},
+                    ),
+
+                    dbc.CardBody([
+                        dbc.Row([
+                            dbc.Col([
+                                dcc.Graph(id='amzn_bar', figure=get_roi_px.get_roi_plot('aapl_roi'),
+                                          config={'displayModeBar':False})
+                            ])
+                        ]),
+                    ]),
+                ],
+                style={"width": "36rem"},
+                className="mt-3"
+            ),
+            dbc.Card(
+                [
+                    dbc.CardImg(
+                        src="/assets/berkshire-hathaway.png",
+                        top=True,
+                        style={"width": "6rem"},
+                    ),
+
+                    dbc.CardBody([
+                        dbc.Row([
+                            dbc.Col([
+                                dcc.Graph(id='brkb_bar', figure=get_roi_px.get_roi_plot('aapl_roi'),
+                                          config={'displayModeBar':False})
+                            ])
+                        ]),
+                    ]),
+                ],
+                style={"width": "36rem"},
+                className="mt-3"
+            ),
+        ]),
+        dbc.Row([
+            dbc.Card(
+                [
+                    dbc.CardImg(
+                        src="/assets/facebook.png",
+                        top=True,
+                        style={"width": "6rem"},
+                    ),
+
+                    dbc.CardBody([
+                        dbc.Row([
+                            dbc.Col([
+                                dcc.Graph(id='fb_bar', figure=get_roi_px.get_roi_plot('aapl_roi'),
+                                          config={'displayModeBar':False})
+                            ])
+                        ]),
+                    ]),
+                ],
+                style={"width": "36rem"},
+                className="mt-3"
+            ),
+            dbc.Card(
+                [
+                    dbc.CardImg(
+                        src="/assets/google.png",
+                        top=True,
+                        style={"width": "6rem"},
+                    ),
+
+                    dbc.CardBody([
+                        dbc.Row([
+                            dbc.Col([
+                                dcc.Graph(id='googl_bar', figure=get_roi_px.get_roi_plot('aapl_roi'),
+                                          config={'displayModeBar':False})
+                            ])
+                        ]),
+                    ]),
+                ],
+                style={"width": "36rem"},
+                className="mt-3"
+            ),
+            dbc.Card(
+                [
+                    dbc.CardImg(
+                        src="/assets/jnj.png",
+                        top=True,
+                        style={"width": "6rem"},
+                    ),
+
+                    dbc.CardBody([
+                        dbc.Row([
+                            dbc.Col([
+                                dcc.Graph(id='jnj_bar', figure=get_roi_px.get_roi_plot('aapl_roi'),
+                                          config={'displayModeBar':False})
+                            ])
+                        ]),
+                    ]),
+                ],
+                style={"width": "36rem"},
+                className="mt-3"
+            ),
+        ]),
+        dbc.Row([
+            dbc.Card(
+                [
+                    dbc.CardImg(
+                        src="/assets/jpmorgan.png",
+                        top=True,
+                        style={"width": "6rem"},
+                    ),
+
+                    dbc.CardBody([
+                        dbc.Row([
+                            dbc.Col([
+                                dcc.Graph(id='jpm_bar', figure=get_roi_px.get_roi_plot('aapl_roi'),
+                                          config={'displayModeBar':False})
+                            ])
+                        ]),
+                    ]),
+                ],
+                style={"width": "36rem"},
+                className="mt-3"
+            ),
+            dbc.Card(
+                [
+                    dbc.CardImg(
+                        src="/assets/microsoft.png",
+                        top=True,
+                        style={"width": "6rem"},
+                    ),
+
+                    dbc.CardBody([
+                        dbc.Row([
+                            dbc.Col([
+                                dcc.Graph(id='msft_bar', figure=get_roi_px.get_roi_plot('aapl_roi'),
+                                          config={'displayModeBar':False})
+                            ])
+                        ]),
+                    ]),
+                ],
+                style={"width": "36rem"},
+                className="mt-3"
+            ),
+            dbc.Card(
+                [
+                    dbc.CardImg(
+                        src="/assets/nvidia.png",
+                        top=True,
+                        style={"width": "6rem"},
+                    ),
+
+                    dbc.CardBody([
+                        dbc.Row([
+                            dbc.Col([
+                                dcc.Graph(id='nvda_bar', figure=get_roi_px.get_roi_plot('aapl_roi'),
+                                          config={'displayModeBar':False})
+                            ])
+                        ]),
+                    ]),
+                ],
+                style={"width": "36rem"},
+                className="mt-3"
+            ),
+        ]),
+        dbc.Row([
+            dbc.Card(
+                [
+                    dbc.CardImg(
+                        src="/assets/tesla.png",
+                        top=True,
+                        style={"width": "6rem"},
+                    ),
+
+                    dbc.CardBody([
+                        dbc.Row([
+                            dbc.Col([
+                                dcc.Graph(id='tsla_bar', figure=get_roi_px.get_roi_plot('aapl_roi'),
+                                          config={'displayModeBar':False})
+                            ])
+                        ]),
+                    ]),
+                ],
+                style={"width": "36rem"},
+                className="mt-3"
+            ),
+            dbc.Card(
+                [
+                    dbc.CardImg(
+                        src="/assets/bitcoin.png",
+                        top=True,
+                        style={"width": "6rem"},
+                    ),
+
+                    dbc.CardBody([
+                        dbc.Row([
+                            dbc.Col([
+                                dcc.Graph(id='btc_bar', figure=get_roi_px.get_roi_plot('aapl_roi'),
+                                          config={'displayModeBar':False})
+                            ])
+                        ]),
+                    ]),
+                ],
+                style={"width": "36rem"},
+                className="mt-3"
+            ),
+            dbc.Card(
+                [
+                    dbc.CardImg(
+                        src="/assets/ethereum.png",
+                        top=True,
+                        style={"width": "6rem"},
+                    ),
+
+                    dbc.CardBody([
+                        dbc.Row([
+                            dbc.Col([
+                                dcc.Graph(id='eth_bar', figure=get_roi_px.get_roi_plot('aapl_roi'),
+                                          config={'displayModeBar':False})
+                            ])
+                        ]),
+                    ]),
+                ],
+                style={"width": "36rem"},
+                className="mt-3"
+            ),
+        ])
+    ])
 
 # overall structure of app    
 tabs = dbc.Tabs(
     [
         dbc.Tab(tab1_content, label="ROI vs Time"),
-        dbc.Tab(
-            "TBA", label="Summary Metrics"),
+        dbc.Tab(tab2_content, label="Summary Metrics"),
     ]
 )
 
