@@ -292,11 +292,18 @@ tab1_content = dbc.Col([
                 className="mt-3"
             ),
             dbc.Card([
-                    dbc.CardImg(
-                        src="/assets/bitcoin.png",
-                        top=True,
-                        style={"width": "6rem"},
-                    ),
+                    dbc.Row([
+                        dbc.Col([
+                            dbc.CardImg(
+                                src="/assets/bitcoin.png",
+                                top=True,
+                                style={"width": "6rem"},),
+                        ]),
+                        dbc.Col([
+                            dbc.Row([html.H5("Model Precision")]),
+                            dbc.Row([dbc.Table.from_dataframe(get_roi_px.gen_table("btc"), striped=True,bordered=True, dark=True)]),
+                        ])   
+                    ]),
 
                     dbc.CardBody([
                         dbc.Row([
@@ -311,11 +318,18 @@ tab1_content = dbc.Col([
                 className="mt-3"
             ),
             dbc.Card([
-                    dbc.CardImg(
-                        src="/assets/ethereum.png",
-                        top=True,
-                        style={"width": "6rem"},
-                    ),
+                    dbc.Row([
+                        dbc.Col([
+                            dbc.CardImg(
+                                src="/assets/ethereum.png",
+                                top=True,
+                                style={"width": "6rem"},),
+                        ]),
+                        dbc.Col([
+                            dbc.Row([html.H5("Model Precision")]),
+                            dbc.Row([dbc.Table.from_dataframe(get_roi_px.gen_table("eth"), striped=True,bordered=True, dark=True)]),
+                        ])   
+                    ]),
 
                     dbc.CardBody([
                         dbc.Row([
