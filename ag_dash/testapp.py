@@ -301,7 +301,7 @@ tab1_content = dbc.Col([
                     dbc.CardBody([
                         dbc.Row([
                             dbc.Col([
-                                dcc.Graph(id='btc_roi', figure=get_roi_px.get_roi_plot('aapl_roi'),
+                                dcc.Graph(id='btc_roi', figure=get_roi_px.get_crypto_roi_plot('btc_roi'),
                                           config={'displayModeBar':False})
                             ])
                         ]),
@@ -320,7 +320,7 @@ tab1_content = dbc.Col([
                     dbc.CardBody([
                         dbc.Row([
                             dbc.Col([
-                                dcc.Graph(id='eth_roi', figure=get_roi_px.get_roi_plot('aapl_roi'),
+                                dcc.Graph(id='eth_roi', figure=get_roi_px.get_crypto_roi_plot('eth_roi'),
                                           config={'displayModeBar':False})
                             ])
                         ]),
