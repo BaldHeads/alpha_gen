@@ -354,7 +354,7 @@ tab2_content = dbc.Card([
 # overall structure of app    
 tabs = dbc.Tabs(
     [
-        dbc.Tab(tab2_content, label="Home"),
+        #dbc.Tab(tab2_content, label="Home"),
         dbc.Tab(tab1_content, label="ROI vs Time"),
     ]
 )
