@@ -292,16 +292,23 @@ tab1_content = dbc.Col([
                 className="mt-3"
             ),
             dbc.Card([
-                    dbc.CardImg(
-                        src="/assets/bitcoin.png",
-                        top=True,
-                        style={"width": "6rem"},
-                    ),
+                    dbc.Row([
+                        dbc.Col([
+                            dbc.CardImg(
+                                src="/assets/bitcoin.png",
+                                top=True,
+                                style={"width": "6rem"},),
+                        ]),
+                        dbc.Col([
+                            dbc.Row([html.H5("Model Precision")]),
+                            dbc.Row([dbc.Table.from_dataframe(get_roi_px.gen_table("btc"), striped=True,bordered=True, dark=True)]),
+                        ])   
+                    ]),
 
                     dbc.CardBody([
                         dbc.Row([
                             dbc.Col([
-                                dcc.Graph(id='btc_roi', figure=get_roi_px.get_roi_plot('aapl_roi'),
+                                dcc.Graph(id='btc_roi', figure=get_roi_px.get_crypto_roi_plot('btc_roi'),
                                           config={'displayModeBar':False})
                             ])
                         ]),
@@ -311,16 +318,23 @@ tab1_content = dbc.Col([
                 className="mt-3"
             ),
             dbc.Card([
-                    dbc.CardImg(
-                        src="/assets/ethereum.png",
-                        top=True,
-                        style={"width": "6rem"},
-                    ),
+                    dbc.Row([
+                        dbc.Col([
+                            dbc.CardImg(
+                                src="/assets/ethereum.png",
+                                top=True,
+                                style={"width": "6rem"},),
+                        ]),
+                        dbc.Col([
+                            dbc.Row([html.H5("Model Precision")]),
+                            dbc.Row([dbc.Table.from_dataframe(get_roi_px.gen_table("eth"), striped=True,bordered=True, dark=True)]),
+                        ])   
+                    ]),
 
                     dbc.CardBody([
                         dbc.Row([
                             dbc.Col([
-                                dcc.Graph(id='eth_roi', figure=get_roi_px.get_roi_plot('aapl_roi'),
+                                dcc.Graph(id='eth_roi', figure=get_roi_px.get_crypto_roi_plot('eth_roi'),
                                           config={'displayModeBar':False})
                             ])
                         ]),
@@ -340,7 +354,7 @@ tab2_content = dbc.Card([
 # overall structure of app    
 tabs = dbc.Tabs(
     [
-        dbc.Tab(tab2_content, label="Home"),
+        #dbc.Tab(tab2_content, label="Home"),
         dbc.Tab(tab1_content, label="ROI vs Time"),
     ]
 )
