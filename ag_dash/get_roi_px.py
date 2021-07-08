@@ -11,3 +11,17 @@ def get_roi_plot(id):
     
     return fig
 
+# reqs to make precision tables by model
+ag_model_prec = pd.read_csv("ag_model_prec.csv",index_col="model")
+
+transposed = ag_model_prec.T
+transposed.reset_index(inplace=True)
+
+# function to generate tables
+def gen_table(ticker):
+    df_prec = pd.DataFrame()
+    df_prec["model"] = transposed["index"]
+    df_prec["prec"] = transposed[ticker]
+    df_prec_new = pd.pivot_table(df_prec,values="prec",columns="model")
+    return df_prec_new
+
